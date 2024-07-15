@@ -16,7 +16,7 @@ public class TaskAction implements Callable<String> {
 
         //System.out.println("Task '" + taskName + "' is executing...");
         logger.info("Task '" + taskName + "' is executing...");
-        Thread.sleep(2000); // Simulate some task execution time
+        Thread.sleep(2000);
         return "Task '" + taskName + "' completed";
     }
 }

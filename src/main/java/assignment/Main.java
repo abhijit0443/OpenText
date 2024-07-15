@@ -28,7 +28,8 @@ public class Main {
         for(int i=0;i<list.size();i++) {
             int number=i+1;
             TaskResult result = list.get(i).get();
-            logger.info("Result  "+number+ " :" + result.getResult());
+           // logger.info("Result  "+number+ " :" + result.getResult());
+            System.out.println("Result : " + result.getResult());
         }
 
         /*Future<TaskResult> future2 = executorService.submitTask(new Task(UUID.randomUUID(),new TaskGroup(Generators.nameBasedGenerator().generate("GROUP2")), TaskType.WRITE, new TaskAction("2")));
@@ -46,12 +47,12 @@ public class Main {
         TaskResult result5 = future5.get();
         TaskResult result6 = future6.get();
 
-        logger.info("Result 1: " + result1.getResult());
-        logger.info("Result 2: " + result2.getResult());
-        logger.info("Result 3: " + result3.getResult());
-        logger.info("Result 4: " + result4.getResult());
-        logger.info("Result 5: " + result5.getResult());
-        logger.info("Result 6: " + result6.getResult());*/
+        System.out.println("Result 1: " + result1.getResult());
+        System.out.println("Result 2: " + result2.getResult());
+        System.out.println("Result 3: " + result3.getResult());
+        System.out.println("Result 4: " + result4.getResult());
+        System.out.println("Result 5: " + result5.getResult());
+        System.out.println("Result 6: " + result6.getResult());*/
 
         ((TaskExecutorServiceImpl) executorService).shutdown();
     }
