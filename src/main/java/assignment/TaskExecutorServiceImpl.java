@@ -1,14 +1,14 @@
 package assignment;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import java.util.*;
 import java.util.concurrent.*;
 
 
 public class TaskExecutorServiceImpl implements TaskExecutor {
-    Logger logger = LoggerFactory.getLogger(TaskExecutorServiceImpl.class.getName());
+    Logger logger = Logger.getLogger(TaskExecutorServiceImpl.class.getName());
     ExecutorService executorService;
     Queue<FutureTaskResult> taskResults = new ConcurrentLinkedQueue<>();
 
@@ -30,10 +30,9 @@ public class TaskExecutorServiceImpl implements TaskExecutor {
 
             try {
                 semaphore.acquire();
-                /* System.out.println("Executing task: " + task.getTaskId() + " in group: " + task.getTaskGroup());*/
-                logger.info("Executing task: " + task.getTaskId() + " in group: " + task.getTaskGroup());
+                logger.info("Executing Task ID :[ " + task.getTaskId() + "] in Group: " + task.getTaskGroup());
                 Future<TaskResult>  future=  executorService.submit(task.getTaskAction());
-
+               // CompletableFuture future=(CompletableFuture)executorService.submit(task.getTaskAction());
                 while (!(future.isDone() )) {
                     Thread.sleep(1);
                 }
@@ -43,7 +42,7 @@ public class TaskExecutorServiceImpl implements TaskExecutor {
                 taskResults.offer(futureTaskResult);
 
         }catch (Exception e) {
-            logger.error("An exception occurred!", new RuntimeException("Runnable exception"));
+                logger.log(Level.SEVERE,"An exception occurred!", new RuntimeException("Runnable exception"));
 
         }
          finally {

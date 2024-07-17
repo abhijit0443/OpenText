@@ -14,27 +14,9 @@
         <version>4.8.1</version>
         <scope>test</scope>
     </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.10.19</version>
-            <scope>test</scope>
-        </dependency>
-      <!--Hi Team i have added ,Third-party Dependencies by JUG,To answer why ?
-    Support Name based Group example GROUP1:Generators.nameBasedGenerator().generate("GROUP"+number)
-    Else we can use something like UUID.fromString("ebb8e8fe-b1b1-11d7-8adb-00b0d078fa18");
-    to represend UUID group  -->
-    <dependency>
-        <groupId>com.fasterxml.uuid</groupId>
-        <artifactId>java-uuid-generator</artifactId>
-        <version>4.1.0</version>
-    </dependency>
-       <!-- Used dependencies  to support Logger-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.30</version>
-        </dependency>
+
+
+
 </dependencies>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
