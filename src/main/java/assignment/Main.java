@@ -12,7 +12,7 @@ import java.util.concurrent.Future;
 public class Main {
     static Logger logger =  Logger.getLogger(Main.class.getName());
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        TaskExecutor executorService = new TaskExecutorServiceImpl(10); // Max concurrency of 3
+        TaskExecutor executorService = new TaskExecutorServiceImpl(10);
 
         List<Future<TaskResult> > futureResultlist=new LinkedList<>();
 
