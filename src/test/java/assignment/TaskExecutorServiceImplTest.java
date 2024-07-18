@@ -1,6 +1,7 @@
 package assignment;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.UUID;
@@ -8,6 +9,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import static org.junit.Assert.assertEquals;
 
@@ -41,8 +43,12 @@ import static org.junit.Assert.assertEquals;
                 return "Task completed";
             };
             Task<String> task = new Task<>(taskId, taskGroup, TaskType.READ, taskAction);
-            taskExecutorService.submitTask(task);
+            Future<TaskResult> future= taskExecutorService.submitTask(task);
             Thread.sleep(200);
-            assertEquals(1, taskExecutorService.taskResults.size());
+            while(!future.isDone()){
+                Thread.sleep(1);
+            }
+            Assert.assertEquals("Task completed",future.get());
+
         }
     }
