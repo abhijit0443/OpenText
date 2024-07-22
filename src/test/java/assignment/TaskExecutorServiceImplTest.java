@@ -24,22 +24,22 @@ import static org.junit.Assert.assertEquals;
 
         @Before
         public void setUp() {
-            mockExecutorService = Executors.newFixedThreadPool(1); // Mock with single thread for simplicity
-            taskExecutorService = new TaskExecutorServiceImpl(2); // Example with 2 threads
-            taskExecutorService.executorService = mockExecutorService; // Inject the mock ExecutorService
+            mockExecutorService = Executors.newFixedThreadPool(1);
+            taskExecutorService = new TaskExecutorServiceImpl(2);
+            taskExecutorService.executorService = mockExecutorService;
         }
 
         @After
         public void tearDown() {
-            taskExecutorService.shutdown(); // Shutdown the TaskExecutorService after each test
+            taskExecutorService.shutdown();
         }
 
         @Test
         public void testSubmitTask() throws Exception {
             UUID taskId = UUID.randomUUID();
-            TaskGroup taskGroup = new TaskGroup(UUID.randomUUID()); // Replace with your actual TaskGroup
+            TaskGroup taskGroup = new TaskGroup(UUID.randomUUID());
             Callable<String> taskAction = () -> {
-                Thread.sleep(100); // Simulate task execution time
+                Thread.sleep(100);
                 return "Task completed";
             };
             Task<String> task = new Task<>(taskId, taskGroup, TaskType.READ, taskAction);

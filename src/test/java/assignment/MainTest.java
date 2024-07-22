@@ -28,7 +28,6 @@ public class MainTest {
 
     @Test
     public void testMainMethodExecution() throws InterruptedException, ExecutionException, TimeoutException {
-        // Redirect stdout to capture log output
         ByteArrayOutputStream logOutputStream = new ByteArrayOutputStream();
         PrintStream logPrintStream = new PrintStream(logOutputStream);
 
